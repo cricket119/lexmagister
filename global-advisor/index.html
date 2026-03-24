@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <meta name="description" content="法律先生全球法律顾问服务 — 11年深耕，覆盖100+国家，为中国企业出海提供全程法律护航" />
+  <title>法律先生 · 全球法律顾问服务</title>
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: -apple-system, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+      background: #060c18;
+      color: #e2e8f0;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ===== COLORS ===== */
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #e8c96a;
+      --gold-dim: rgba(201,168,76,0.15);
+      --navy: #060c18;
+      --navy-2: #0d1628;
+      --navy-3: #111f38;
+      --navy-card: #0f1c33;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --border: rgba(201,168,76,0.2);
+    }
+
+    /* ===== UTILITIES ===== */
+    .container { max-width: 680px; margin: 0 auto; padding: 0 20px; }
+    .gold { color: var(--gold); }
+    .text-center { text-align: center; }
+
+    /* ===== TOP BAR ===== */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(6,12,24,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .topbar-logo {
+      font-size: 15px; font-weight: 700;
+      letter-spacing: 0.05em; color: var(--gold);
+    }
+    .topbar-logo span { color: var(--text); font-weight: 400; margin-left: 4px; font-size: 13px; }
+    .topbar-cta {
+      background: var(--gold);
+      color: #060c18;
+      border: none; border-radius: 20px;
+      padding: 7px 18px; font-size: 13px; font-weight: 700;
+      cursor: pointer; text-decoration: none;
+      transition: background 0.2s;
+    }
+    .topbar-cta:hover { background: var(--gold-light); }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100svh;
+      display: flex; align-items: center;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(30,60,120,0.3) 0%, transparent 60%),
+        var(--navy);
+      padding: 100px 20px 60px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .hero-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold-dim);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 6px 16px; font-size: 12px;
+      color: var(--gold); letter-spacing: 0.08em;
+      margin-bottom: 28px;
+    }
+    .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
+
+    .hero h1 {
+      font-size: clamp(28px, 7vw, 42px);
+      font-weight: 800;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      margin-bottom: 20px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 16px; color: var(--text-muted);
+      line-height: 1.8; margin-bottom: 36px;
+    }
+
+    .hero-stats {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 12px; margin-bottom: 40px;
+    }
+    .stat-item {
+      background: var(--navy-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 12px; text-align: center;
+    }
+    .stat-num {
+      font-size: 24px; font-weight: 800;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.2;
+    }
+    .stat-label { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, var(--gold), #b8902e);
+      color: #060c18; border-radius: 12px;
+      padding: 14px 28px; font-size: 15px; font-weight: 700;
+      text-decoration: none; border: none; cursor: pointer;
+      box-shadow: 0 4px 24px rgba(201,168,76,0.35);
+      transition: all 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(201,168,76,0.45); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent;
+      color: var(--text); border-radius: 12px;
+      padding: 14px 24px; font-size: 15px; font-weight: 600;
+      text-decoration: none; border: 1px solid var(--border);
+      cursor: pointer; transition: all 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ===== SECTION BASE ===== */
+    section { padding: 72px 0; }
+    .section-label {
+      display: inline-block;
+      font-size: 11px; letter-spacing: 0.15em;
+      color: var(--gold); text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(22px, 5vw, 30px);
+      font-weight: 800; line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      font-size: 15px; color: var(--text-muted);
+      line-height: 1.8; margin-bottom: 40px;
+    }
+
+    /* ===== TRUST STRIP ===== */
+    .trust-strip {
+      background: var(--navy-2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 24px 20px;
+    }
+    .trust-inner {
+      max-width: 680px; margin: 0 auto;
+      display: flex; flex-wrap: wrap;
+      justify-content: center; gap: 8px 24px;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; color: var(--text-muted);
+    }
+    .trust-item .icon { color: var(--gold); font-size: 15px; }
+
+    /* ===== PROBLEM ===== */
+    .problem-section { background: var(--navy); }
+    .pain-list { display: flex; flex-direction: column; gap: 12px; }
+    .pain-item {
+      display: flex; gap: 14px; align-items: flex-start;
+      background: var(--navy-card);
+      border: 1px solid rgba(255,80,80,0.12);
+      border-left: 3px solid rgba(255,80,80,0.5);
+      border-radius: 10px; padding: 16px;
+    }
+    .pain-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+    .pain-text { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+    .pain-text strong { color: var(--text); display: block; margin-bottom: 2px; font-size: 15px; }
+
+    /* ===== SOLUTION ===== */
+    .solution-section { background: var(--navy-2); }
+    .solution-grid { display: flex; flex-direction: column; gap: 16px; }
+    .solution-card {
+      background: var(--navy-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .solution-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+    .card-icon { font-size: 28px; margin-bottom: 12px; }
+    .card-title { font-size: 17px; font-weight: 700; color: var(--gold); margin-bottom: 8px; }
+    .card-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+    /* ===== HOW IT WORKS ===== */
+    .how-section { background: var(--navy); }
+    .steps { display: flex; flex-direction: column; gap: 0; }
+    .step {
+      display: flex; gap: 20px; align-items: flex-start;
+      padding-bottom: 32px; position: relative;
+    }
+    .step:not(:last-child)::after {
+      content: '';
+      position: absolute; left: 19px; top: 44px;
+      width: 2px; bottom: 0;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+    .step-num {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--gold), #b8902e);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; font-weight: 800; color: #060c18;
+    }
+    .step-body { flex: 1; padding-top: 6px; }
+    .step-title { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .step-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+    /* ===== SCOPE ===== */
+    .scope-section { background: var(--navy-2); }
+    .region-list { display: flex; flex-direction: column; gap: 10px; }
+    .region-item {
+      background: var(--navy-card);
+      border: 1px solid var(--border);
+      border-radius: 10px; padding: 14px 18px;
+    }
+    .region-name {
+      font-size: 13px; font-weight: 700; color: var(--gold);
+      margin-bottom: 6px; display: flex; align-items: center; gap: 6px;
+    }
+    .region-countries { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
+    /* ===== PRICING ===== */
+    .pricing-section { background: var(--navy); }
+    .pricing-card {
+      background: var(--navy-card);
+      border: 1px solid var(--gold);
+      border-radius: 20px; padding: 36px 28px;
+      position: relative; overflow: hidden;
+    }
+    .pricing-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+    }
+    .pricing-badge {
+      display: inline-block;
+      background: var(--gold-dim);
+      border: 1px solid var(--border);
+      border-radius: 100px; padding: 4px 14px;
+      font-size: 12px; color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .pricing-title { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+    .pricing-price {
+      font-size: 42px; font-weight: 900;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1; margin-bottom: 4px;
+    }
+    .pricing-period { font-size: 14px; color: var(--text-muted); margin-bottom: 28px; }
+    .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+    .pricing-features li {
+      display: flex; gap: 10px; align-items: flex-start;
+      font-size: 14px; color: var(--text-muted); line-height: 1.6;
+    }
+    .pricing-features li::before {
+      content: '✦';
+      color: var(--gold); flex-shrink: 0; font-size: 11px; margin-top: 4px;
+    }
+    .pricing-note {
+      font-size: 13px; color: var(--text-muted);
+      background: rgba(255,255,255,0.03);
+      border-radius: 8px; padding: 12px 16px;
+      border-left: 2px solid var(--border);
+      margin-bottom: 28px;
+    }
+
+    /* ===== ABOUT ===== */
+    .about-section { background: var(--navy-2); }
+    .about-card {
+      background: var(--navy-card);
+      border: 1px solid var(--border);
+      border-radius: 16px; padding: 28px;
+    }
+    .about-nums {
+      display: grid; grid-template-columns: repeat(2,1fr);
+      gap: 16px; margin-top: 24px;
+    }
+    .about-num-item {
+      text-align: center;
+      padding: 16px;
+      background: rgba(201,168,76,0.04);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    .about-num { font-size: 22px; font-weight: 800; color: var(--gold); line-height: 1.2; }
+    .about-num-label { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+
+    /* ===== WHO ===== */
+    .who-section { background: var(--navy); }
+    .who-list { display: flex; flex-direction: column; gap: 10px; }
+    .who-item {
+      display: flex; gap: 14px; align-items: center;
+      background: var(--navy-card);
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 16px 18px;
+      font-size: 14px; color: var(--text-muted);
+    }
+    .who-item .who-icon { font-size: 22px; flex-shrink: 0; }
+
+    /* ===== CTA ===== */
+    .cta-section {
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 100%, rgba(201,168,76,0.1) 0%, transparent 60%),
+        var(--navy-2);
+      padding: 80px 20px;
+    }
+    .cta-box {
+      max-width: 560px; margin: 0 auto;
+      background: var(--navy-card);
+      border: 1px solid var(--border);
+      border-radius: 20px; padding: 40px 28px;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .cta-box::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .cta-title { font-size: 24px; font-weight: 800; margin-bottom: 12px; }
+    .cta-desc { font-size: 15px; color: var(--text-muted); margin-bottom: 28px; line-height: 1.7; }
+    .wechat-block {
+      background: rgba(201,168,76,0.06);
+      border: 1px dashed var(--border);
+      border-radius: 12px; padding: 20px;
+      margin-bottom: 24px;
+    }
+    .wechat-id {
+      font-size: 22px; font-weight: 800; color: var(--gold);
+      letter-spacing: 0.05em; margin-bottom: 4px;
+    }
+    .wechat-label { font-size: 13px; color: var(--text-muted); }
+    .wechat-tip {
+      display: flex; align-items: center; gap: 6px;
+      justify-content: center; margin-top: 10px;
+      font-size: 13px; color: var(--text-muted);
+    }
+    .contact-person {
+      font-size: 14px; color: var(--text-muted); margin-bottom: 20px;
+    }
+    .contact-person strong { color: var(--text); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid var(--border);
+      padding: 28px 20px; text-align: center;
+    }
+    .footer-logo { font-size: 16px; font-weight: 800; color: var(--gold); margin-bottom: 8px; }
+    .footer-sub { font-size: 12px; color: var(--text-muted); }
+
+    /* ===== DIVIDER ===== */
+    .divider {
+      width: 48px; height: 3px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      border-radius: 2px; margin: 16px 0 32px;
+    }
+
+    /* ===== SCROLL REVEAL (CSS only) ===== */
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+      .reveal.visible { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <nav class="topbar">
+    <div class="topbar-logo">法律先生 <span>Lex Magister</span></div>
+    <a href="#contact" class="topbar-cta">立即咨询</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">全球法律顾问服务 · 2025 开放预约</div>
+
+      <h1>
+        出海无国界，<br/>
+        法律<em>全程护航</em>
+      </h1>
+
+      <p class="hero-sub">
+        一份年度协议，覆盖全球 100+ 国家。<br/>
+        从合同审阅到跨境合规，从日常咨询到危机处置——<br/>
+        让专业法律支持成为你出海最稳固的底座。
+      </p>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">11年</div>
+          <div class="stat-label">深耕出海服务</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">100+</div>
+          <div class="stat-label">国家与地区</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">900+</div>
+          <div class="stat-label">海外律所资源</div>
+        </div>
+      </div>
+
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">
+          <span>📋</span> 预约专属顾问
+        </a>
+        <a href="#pricing" class="btn-secondary">
+          <span>查看方案</span> →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <div class="trust-strip">
+    <div class="trust-inner">
+      <div class="trust-item"><span class="icon">✦</span> 中国企业出海专属设计</div>
+      <div class="trust-item"><span class="icon">✦</span> 国内统筹 + 海外本地律师</div>
+      <div class="trust-item"><span class="icon">✦</span> 年度持续服务，不限次咨询</div>
+      <div class="trust-item"><span class="icon">✦</span> 40万+ 律师资源网络</div>
+      <div class="trust-item"><span class="icon">✦</span> 东京·新加坡·迪拜·巴黎本地节点</div>
+    </div>
+  </div>
+
+  <!-- PROBLEM -->
+  <section class="problem-section">
+    <div class="container reveal">
+      <div class="section-label">出海痛点</div>
+      <h2 class="section-title">你是否也在面对<br/>这些法律困境？</h2>
+      <div class="divider"></div>
+      <div class="pain-list">
+        <div class="pain-item">
+          <div class="pain-icon">🌐</div>
+          <div class="pain-text">
+            <strong>多国法律差异，无从下手</strong>
+            每进入一个新市场，就要重新寻找当地律师，沟通成本高、交付质量不稳定。
+          </div>
+        </div>
+        <div class="pain-item">
+          <div class="pain-icon">⚠️</div>
+          <div class="pain-text">
+            <strong>合规风险发现太晚</strong>
+            签完合同才发现条款有漏洞，投资落地后才踩到监管红线，损失已难挽回。
+          </div>
+        </div>
+        <div class="pain-item">
+          <div class="pain-icon">⏳</div>
+          <div class="pain-text">
+            <strong>临时找律师效率极低</strong>
+            紧急情况下，临时委托外部律师不了解背景，反复沟通耽误最佳处置时机。
+          </div>
+        </div>
+        <div class="pain-item">
+          <div class="pain-icon">💸</div>
+          <div class="pain-text">
+            <strong>单点服务成本畸高</strong>
+            每一次法律咨询独立收费，零散委托拼凑出的"法律服务"既贵又不系统。
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTION -->
+  <section class="solution-section">
+    <div class="container reveal">
+      <div class="section-label">我们的解法</div>
+      <h2 class="section-title">一套为出海企业<br/>量身设计的法律体系</h2>
+      <p class="section-desc">法律先生将11年跨境法律服务经验凝结成一套可持续运转的年度顾问机制——不是被动响应，而是主动护航。</p>
+      <div class="solution-grid">
+        <div class="solution-card">
+          <div class="card-icon">🤝</div>
+          <div class="card-title">国内统筹 × 海外本地律师</div>
+          <div class="card-desc">由法律先生核心团队主导统筹，联动目标国本地执业律师，确保建议既符合中国企业的决策逻辑，又落地可执行。</div>
+        </div>
+        <div class="solution-card">
+          <div class="card-icon">📞</div>
+          <div class="card-title">日常法律支持，不限次咨询</div>
+          <div class="card-desc">经营决策、合规疑问、合同评审——随时触发，专属对接，当天响应。让每一个关键决策都有法律视角的加持。</div>
+        </div>
+        <div class="solution-card">
+          <div class="card-icon">📄</div>
+          <div class="card-title">商业文件全程把关</div>
+          <div class="card-desc">合作协议、合作备忘录、授权文件……覆盖跨境经营全链路的法律文件审阅与起草建议，消灭潜在风险源。</div>
+        </div>
+        <div class="solution-card">
+          <div class="card-icon">🌍</div>
+          <div class="card-title">多法域协同，快速调兵</div>
+          <div class="card-desc">当业务拓展至新市场，或遭遇跨国纠纷，可在48小时内调配对应国家专业律师介入，全程跟踪推进。</div>
+        </div>
+        <div class="solution-card">
+          <div class="card-icon">🔭</div>
+          <div class="card-title">风险预判，持续更新</div>
+          <div class="card-desc">结合各国政策动态和服务经验，主动推送法律风险提示，帮助企业在风险真正成为问题之前提前布防。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-section">
+    <div class="container reveal">
+      <div class="section-label">服务流程</div>
+      <h2 class="section-title">从签约到落地，<br/>每一步都有人跟进</h2>
+      <div class="divider"></div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-body">
+            <div class="step-title">需求对接与方案定制</div>
+            <div class="step-desc">由创始人彭帅及核心团队与企业深度沟通，了解出海布局、目标国家、业务结构，量身设计服务方案。</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-body">
+            <div class="step-title">团队配置与资源绑定</div>
+            <div class="step-desc">指定国内法律专家 + 目标国本地律师团队 + 专属客户经理三位一体，完成服务团队搭建。</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-body">
+            <div class="step-title">启动年度顾问服务</div>
+            <div class="step-desc">建立专属沟通通道，开始日常法律支持。遇到合同审阅、合规咨询、风险评估——随时提交，当天处理。</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div class="step-body">
+            <div class="step-title">持续优化与动态响应</div>
+            <div class="step-desc">定期同步法律风险更新，根据业务发展动态调整服务重心，确保法律支持始终与业务进度同频共振。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCOPE -->
+  <section class="scope-section">
+    <div class="container reveal">
+      <div class="section-label">覆盖范围</div>
+      <h2 class="section-title">你想去的地方，<br/>我们都在那里</h2>
+      <p class="section-desc">目前已覆盖及可支持的国家与地区累计超过 <span class="gold">100个</span>，涵盖全球主要出海目的地。</p>
+      <div class="region-list">
+        <div class="region-item">
+          <div class="region-name">🌏 东南亚</div>
+          <div class="region-countries">新加坡、越南、印度尼西亚、泰国、马来西亚、菲律宾、柬埔寨、老挝、缅甸</div>
+        </div>
+        <div class="region-item">
+          <div class="region-name">🕌 中东地区</div>
+          <div class="region-countries">阿联酋、沙特阿拉伯、卡塔尔、科威特、阿曼、巴林、以色列、土耳其</div>
+        </div>
+        <div class="region-item">
+          <div class="region-name">🏛️ 欧洲</div>
+          <div class="region-countries">德国、法国、荷兰、意大利、西班牙、葡萄牙、比利时、卢森堡、瑞士、奥地利、波兰、捷克、匈牙利、罗马尼亚</div>
+        </div>
+        <div class="region-item">
+          <div class="region-name">🗽 北美地区</div>
+          <div class="region-countries">美国、加拿大、墨西哥</div>
+        </div>
+        <div class="region-item">
+          <div class="region-name">🌿 南亚及中亚</div>
+          <div class="region-countries">印度、孟加拉国、巴基斯坦、斯里兰卡、哈萨克斯坦、乌兹别克斯坦</div>
+        </div>
+        <div class="region-item">
+          <div class="region-name">🌎 拉美地区</div>
+          <div class="region-countries">巴西、阿根廷、智利、秘鲁、哥伦比亚</div>
+        </div>
+        <div class="region-item">
+          <div class="region-name">🌍 非洲重点国家</div>
+          <div class="region-countries">南非、肯尼亚、尼日利亚、埃及、摩洛哥、埃塞俄比亚</div>
+        </div>
+        <div class="region-item">
+          <div class="region-name">🗾 亚太发达经济体</div>
+          <div class="region-countries">日本、韩国、澳大利亚、新西兰</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO -->
+  <section class="who-section">
+    <div class="container reveal">
+      <div class="section-label">适用对象</div>
+      <h2 class="section-title">这份服务，<br/>为你而设</h2>
+      <div class="divider"></div>
+      <div class="who-list">
+        <div class="who-item">
+          <div class="who-icon">🏢</div>
+          <div>正在规划或已开展出海业务，需要系统性法律支持的中国企业</div>
+        </div>
+        <div class="who-item">
+          <div class="who-icon">🌐</div>
+          <div>同时布局多个国家市场，面临多法域合规挑战的跨国经营者</div>
+        </div>
+        <div class="who-item">
+          <div class="who-icon">💼</div>
+          <div>有跨境投资需求，希望降低海外资产配置法律风险的个人投资者</div>
+        </div>
+        <div class="who-item">
+          <div class="who-icon">🎓</div>
+          <div>子女在海外求学，需要持续法律保障与紧急支持的家庭</div>
+        </div>
+        <div class="who-item">
+          <div class="who-icon">🏠</div>
+          <div>长期旅居海外，涉及生活、投资或商业经营的中国客户</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing-section" id="pricing">
+    <div class="container reveal">
+      <div class="section-label">服务方案</div>
+      <h2 class="section-title">透明定价，<br/>一价覆盖全年</h2>
+      <div class="divider"></div>
+      <div class="pricing-card">
+        <div class="pricing-badge">✦ 全球法律顾问服务 · 年度方案</div>
+        <div class="pricing-title">Lex Magister Global Legal Retainer</div>
+        <div class="pricing-price">¥168,000</div>
+        <div class="pricing-period">/ 年度 · 含2个国家默认覆盖</div>
+
+        <ul class="pricing-features">
+          <li>全年不限次日常法律咨询，专属通道快速响应</li>
+          <li>商业合同与法律文件审阅及起草建议</li>
+          <li>经营决策、投资合作的法律支持意见</li>
+          <li>2个目标国家本地律师团队常驻支持</li>
+          <li>多法域突发情况快速调配资源</li>
+          <li>主动推送各国法律政策风险更新</li>
+          <li>专属客户经理，全程项目管理跟进</li>
+        </ul>
+
+        <div class="pricing-note">
+          📌 如涉及 3 个及以上国家、或业务结构较为复杂，可根据实际需求另行协商定制方案及费用。
+        </div>
+
+        <a href="#contact" class="btn-primary" style="width:100%;justify-content:center;font-size:16px;padding:16px;">
+          立即预约专属顾问 →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section">
+    <div class="container reveal">
+      <div class="section-label">关于法律先生</div>
+      <h2 class="section-title">11年，只做一件事</h2>
+      <p class="section-desc">帮助中国企业在全球市场，用法律的力量走得更稳、更远。</p>
+      <div class="about-card">
+        <p style="font-size:15px;color:var(--text-muted);line-height:1.8;margin-bottom:20px;">
+          法律先生（Lex Magister）是面向中国企业出海构建的全球领先法律与资源整合平台。经过11年持续积累，我们不是一家单一律所，而是一个连接全球法律资源、专注跨法域协同的服务网络。
+        </p>
+        <p style="font-size:15px;color:var(--text-muted);line-height:1.8;margin-bottom:8px;">
+          在东京、新加坡、迪拜、巴黎等地已建立本地服务节点，能够在多国家、多时区环境下为企业提供实时响应与落地执行。
+        </p>
+        <div class="about-nums">
+          <div class="about-num-item">
+            <div class="about-num">40万+</div>
+            <div class="about-num-label">中国律师资源</div>
+          </div>
+          <div class="about-num-item">
+            <div class="about-num">6000+</div>
+            <div class="about-num-label">大陆律所合作</div>
+          </div>
+          <div class="about-num-item">
+            <div class="about-num">900+</div>
+            <div class="about-num-label">海外律所网络</div>
+          </div>
+          <div class="about-num-item">
+            <div class="about-num">100+</div>
+            <div class="about-num-label">覆盖国家地区</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="contact">
+    <div class="cta-box reveal">
+      <div class="section-label" style="display:block;margin-bottom:12px;">开始合作</div>
+      <h2 class="cta-title">预约专属法律顾问</h2>
+      <p class="cta-desc">
+        出海不应该独自面对法律的不确定性。<br/>
+        现在联系我们，30分钟内了解适合你的方案。
+      </p>
+
+      <div class="wechat-block">
+        <div class="wechat-id">flxs77</div>
+        <div class="wechat-label">微信号 · 扫码 / 搜号添加</div>
+        <div class="wechat-tip">
+          <span>💬</span> 添加后注明「全球顾问」即可快速对接
+        </div>
+      </div>
+
+      <div class="contact-person">
+        联系人：<strong>伊然</strong> · 法律先生国际事务部总监
+      </div>
+
+      <a href="weixin://dl/search?keyword=flxs77" class="btn-primary" style="width:100%;justify-content:center;">
+        <span>💬</span> 微信添加伊然
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">法律先生 · Lex Magister</div>
+    <div class="footer-sub" style="margin-top:6px;">
+      Lex Magister Global Research · 法律先生出海研究院
+    </div>
+    <div class="footer-sub" style="margin-top:8px;font-size:11px;opacity:0.5;">
+      © 2025 Lex Magister. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- SCROLL REVEAL -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
