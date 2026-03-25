@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <meta name="description" content="法律先生「AI + 出海」巡回论坛重庆站 — 2026年3月28日，50人限额，探讨AI与出海如何改变法律行业" />
+  <meta property="og:title" content="法律先生「AI + 出海」巡回论坛 · 重庆站" />
+  <meta property="og:description" content="世界变幻如此，唯有AI与出海令人振奋。3月28日重庆，50人限额闭门论坛。" />
+  <title>法律先生「AI + 出海」巡回论坛 · 重庆站</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: -apple-system, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+      background: #fafaf7;
+      color: #1a1a2e;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    :root {
+      --accent:      #c0392b;
+      --accent-soft:  rgba(192,57,43,0.08);
+      --accent-line:  rgba(192,57,43,0.25);
+      --gold:        #b8922a;
+      --gold-soft:   rgba(184,146,42,0.08);
+      --ink:         #1a1a2e;
+      --ink-2:       #2d2d44;
+      --muted:       #6b6b80;
+      --muted-2:     #9898a8;
+      --bg:          #fafaf7;
+      --bg-2:        #f3f1ec;
+      --bg-3:        #eceae4;
+      --card:        #ffffff;
+      --border:      #e4e2dc;
+    }
+
+    .container { max-width: 640px; margin: 0 auto; padding: 0 20px; }
+
+    /* ===== HERO ===== */
+    .hero {
+      text-align: center;
+      padding: 72px 20px 48px;
+      background: linear-gradient(170deg, #fafaf7 0%, #f0ede5 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -120px; right: -120px;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: rgba(192,57,43,0.04);
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -80px;
+      width: 240px; height: 240px;
+      border-radius: 50%;
+      background: rgba(184,146,42,0.05);
+    }
+    .hero-logo {
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+    .hero-logo span { color: var(--ink); font-weight: 600; }
+    .hero-supertitle {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      padding: 5px 16px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1.35;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero h1 .ai { color: var(--accent); }
+    .hero h1 .sea { color: var(--gold); }
+    .hero-subtitle {
+      font-size: 15px;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-city {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 10px 24px;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--ink);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      position: relative;
+      z-index: 1;
+    }
+    .hero-city .dot {
+      width: 10px; height: 10px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.3); }
+    }
+
+    /* ===== INFO STRIP ===== */
+    .info-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0;
+      background: var(--card);
+      border-top: 2px solid var(--accent);
+      border-bottom: 1px solid var(--border);
+    }
+    .info-item {
+      text-align: center;
+      padding: 20px 12px;
+      border-right: 1px solid var(--border);
+    }
+    .info-item:last-child { border-right: none; }
+    .info-item .label {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 6px;
+    }
+    .info-item .value {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+    .info-item .value.accent { color: var(--accent); }
+
+    /* ===== COUNTDOWN ===== */
+    .countdown-bar {
+      background: var(--accent-soft);
+      border-bottom: 1px solid var(--accent-line);
+      text-align: center;
+      padding: 12px 20px;
+    }
+    .countdown-bar span {
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    .countdown-bar .days {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 10px;
+      margin: 0 4px;
+    }
+
+    /* ===== SECTIONS ===== */
+    section { padding: 40px 0; }
+    .section-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 4px 12px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.35;
+      margin-bottom: 16px;
+      color: var(--ink);
+    }
+    .section-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    /* ===== THEME SECTION ===== */
+    .theme-section { background: var(--bg-2); }
+    .theme-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .theme-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      transition: box-shadow 0.2s;
+    }
+    .theme-card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+    .theme-num {
+      flex-shrink: 0;
+      width: 32px; height: 32px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .theme-card.gold .theme-num { background: var(--gold); }
+    .theme-text {
+      font-size: 14px;
+      color: var(--ink-2);
+      line-height: 1.6;
+      font-weight: 500;
+    }
+    .theme-tag {
+      display: inline-block;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-top: 6px;
+      font-weight: 600;
+    }
+    .tag-ai {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    .tag-sea {
+      background: var(--gold-soft);
+      color: var(--gold);
+    }
+    .tag-both {
+      background: linear-gradient(90deg, rgba(192,57,43,0.08), rgba(184,146,42,0.08));
+      color: var(--ink-2);
+    }
+
+    /* ===== SPEAKERS ===== */
+    .speaker-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .speaker-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px 16px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .speaker-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--gold));
+    }
+    .speaker-avatar {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--bg-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 12px;
+      font-size: 22px;
+    }
+    .speaker-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 2px;
+    }
+    .speaker-title {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .speaker-org {
+      font-size: 11px;
+      color: var(--muted-2);
+      margin-top: 4px;
+    }
+
+    /* ===== VENUE ===== */
+    .venue-section { background: var(--bg-2); }
+    .venue-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .venue-map {
+      width: 100%;
+      height: 180px;
+      background: var(--bg-3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      color: var(--muted-2);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+    .venue-map .pin {
+      position: absolute;
+      font-size: 36px;
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    .venue-details {
+      padding: 20px;
+    }
+    .venue-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .venue-row:last-child { border-bottom: none; }
+    .venue-icon {
+      font-size: 18px;
+      flex-shrink: 0;
+      width: 36px; height: 36px;
+      background: var(--bg-2);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .venue-label {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .venue-value {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+
+    /* ===== CTA / QR ===== */
+    .cta-section {
+      text-align: center;
+      padding: 48px 0 60px;
+      background: linear-gradient(170deg, #fafaf7 0%, #f0ede5 100%);
+    }
+    .cta-urgency {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 8px 20px;
+      border-radius: 24px;
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+    }
+    .cta-urgency .flash { animation: flash 1s infinite; }
+    @keyframes flash {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .qr-wrapper {
+      display: inline-block;
+      background: var(--card);
+      border: 2px solid var(--border);
+      border-radius: 20px;
+      padding: 20px;
+      margin: 16px 0;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+    }
+    .qr-wrapper img {
+      width: 200px;
+      height: 200px;
+      border-radius: 10px;
+      display: block;
+    }
+    .qr-hint {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+    .contact-info {
+      margin-top: 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 20px;
+    }
+    .contact-info .wechat-icon {
+      width: 24px; height: 24px;
+      background: #07c160;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .contact-info .text {
+      font-size: 13px;
+      color: var(--ink-2);
+    }
+    .contact-info .text strong {
+      color: var(--ink);
+    }
+
+    /* ===== HIGHLIGHTS ===== */
+    .highlights {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .highlight-item {
+      text-align: center;
+      padding: 16px 8px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+    .highlight-item .emoji { font-size: 24px; margin-bottom: 6px; }
+    .highlight-item .hl-text {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    .highlight-item .hl-text strong {
+      display: block;
+      font-size: 14px;
+      color: var(--ink);
+      margin-bottom: 2px;
+    }
+
+    /* ===== FOOTER ===== */
+    .page-footer {
+      text-align: center;
+      padding: 24px 20px 32px;
+      border-top: 1px solid var(--border);
+    }
+    .footer-brand {
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: var(--muted-2);
+      text-transform: uppercase;
+    }
+    .footer-brand strong { color: var(--muted); }
+    .footer-copy {
+      font-size: 11px;
+      color: var(--muted-2);
+      margin-top: 4px;
+    }
+
+    /* ===== AGENDA TIMELINE ===== */
+    .agenda-section { }
+    .timeline {
+      position: relative;
+      padding-left: 28px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: var(--border);
+    }
+    .tl-item {
+      position: relative;
+      padding-bottom: 20px;
+    }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-dot {
+      position: absolute;
+      left: -22px;
+      top: 6px;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 3px solid var(--bg);
+    }
+    .tl-item.gold .tl-dot { background: var(--gold); }
+    .tl-time {
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .tl-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-top: 2px;
+    }
+    .tl-desc {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-logo"><span>Lex Magister</span> · 法律先生</div>
+    <div class="hero-supertitle">巡回论坛 · 第一站</div>
+    <h1>「<span class="ai">AI</span> + <span class="sea">出海</span>」<br/>如何改变法律行业？</h1>
+    <p class="hero-subtitle">世界变幻如此，唯有 AI 与出海令人振奋</p>
+    <div class="hero-city">
+      <span class="dot"></span>
+      重庆站
+    </div>
+  </section>
+
+  <!-- INFO STRIP -->
+  <div class="info-strip">
+    <div class="info-item">
+      <div class="label">日期</div>
+      <div class="value">3月28日</div>
+    </div>
+    <div class="info-item">
+      <div class="label">时间</div>
+      <div class="value">10:00-12:30</div>
+    </div>
+    <div class="info-item">
+      <div class="label">限额</div>
+      <div class="value accent">仅50席</div>
+    </div>
+  </div>
+
+  <!-- COUNTDOWN -->
+  <div class="countdown-bar">
+    <span>距活动开始仅剩 <span class="days" id="countdown">--</span> 天 · 名额有限先到先得</span>
+  </div>
+
+  <!-- HIGHLIGHTS -->
+  <section>
+    <div class="container">
+      <div class="section-tag">为什么参加</div>
+      <div class="section-title">这不是一场普通的讲座</div>
+      <p class="section-desc">一场汇聚法律与科技界实战者的深度闭门讨论，50人限额，确保每位参与者都能深度交流。</p>
+      <div class="highlights">
+        <div class="highlight-item">
+          <div class="emoji">&#x1F9E0;</div>
+          <div class="hl-text"><strong>深度闭门</strong>50人小规模<br/>高密度交流</div>
+        </div>
+        <div class="highlight-item">
+          <div class="emoji">&#x1F680;</div>
+          <div class="hl-text"><strong>实战分享</strong>真实案例<br/>不讲空话</div>
+        </div>
+        <div class="highlight-item">
+          <div class="emoji">&#x1F310;</div>
+          <div class="hl-text"><strong>跨界碰撞</strong>法律 × 科技<br/>破圈思维</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOPICS -->
+  <section class="theme-section">
+    <div class="container">
+      <div class="section-tag">核心议题</div>
+      <div class="section-title">7大议题，直击行业痛点</div>
+      <div class="theme-grid">
+        <div class="theme-card">
+          <div class="theme-num">1</div>
+          <div>
+            <div class="theme-text">如何从 0 到 1，安装一只「小龙虾」？</div>
+            <span class="theme-tag tag-ai">AI 入门</span>
+          </div>
+        </div>
+        <div class="theme-card">
+          <div class="theme-num">2</div>
+          <div>
+            <div class="theme-text">如何把 AI 运用在律师的业务场景中？</div>
+            <span class="theme-tag tag-ai">AI 实践</span>
+          </div>
+        </div>
+        <div class="theme-card">
+          <div class="theme-num">3</div>
+          <div>
+            <div class="theme-text">如何把 AI 用到律所管理体系，变成律所的战略？</div>
+            <span class="theme-tag tag-ai">AI 战略</span>
+          </div>
+        </div>
+        <div class="theme-card gold">
+          <div class="theme-num">4</div>
+          <div>
+            <div class="theme-text">出海到底是怎么一回事？新的模式是什么？</div>
+            <span class="theme-tag tag-sea">出海认知</span>
+          </div>
+        </div>
+        <div class="theme-card gold">
+          <div class="theme-num">5</div>
+          <div>
+            <div class="theme-text">出海该如何赚钱？有什么新的模式和方法论？</div>
+            <span class="theme-tag tag-sea">出海商业</span>
+          </div>
+        </div>
+        <div class="theme-card">
+          <div class="theme-num">6</div>
+          <div>
+            <div class="theme-text">AI 如何与出海相结合，让律师拓展服务边界？</div>
+            <span class="theme-tag tag-both">AI × 出海</span>
+          </div>
+        </div>
+        <div class="theme-card">
+          <div class="theme-num">7</div>
+          <div>
+            <div class="theme-text">讨论各自 AI 的玩法和不同的策略逻辑</div>
+            <span class="theme-tag tag-ai">开放讨论</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPEAKERS -->
+  <section class="speaker-section">
+    <div class="container">
+      <div class="section-tag">分享嘉宾</div>
+      <div class="section-title">四位行业实战者</div>
+      <div class="speaker-grid">
+        <div class="speaker-card">
+          <div class="speaker-avatar">&#x2696;&#xFE0F;</div>
+          <div class="speaker-name">何洪涛</div>
+          <div class="speaker-title">主任</div>
+          <div class="speaker-org">重庆坤源衡泰律师事务所</div>
+        </div>
+        <div class="speaker-card">
+          <div class="speaker-avatar">&#x2696;&#xFE0F;</div>
+          <div class="speaker-name">熊鑫</div>
+          <div class="speaker-title">副主任</div>
+          <div class="speaker-org">重庆坤源衡泰律师事务所</div>
+        </div>
+        <div class="speaker-card">
+          <div class="speaker-avatar">&#x1F4BB;</div>
+          <div class="speaker-name">龙雄彪</div>
+          <div class="speaker-title">创始人</div>
+          <div class="speaker-org">法狗狗</div>
+        </div>
+        <div class="speaker-card">
+          <div class="speaker-avatar">&#x1F30D;</div>
+          <div class="speaker-name">彭帅</div>
+          <div class="speaker-title">创始人</div>
+          <div class="speaker-org">法律先生 Lex Magister</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VENUE -->
+  <section class="venue-section">
+    <div class="container">
+      <div class="section-tag">活动地点</div>
+      <div class="section-title">重庆 · 两江新区</div>
+      <div class="venue-card">
+        <div class="venue-map">
+          <span class="pin">&#x1F4CD;</span>
+        </div>
+        <div class="venue-details">
+          <div class="venue-row">
+            <div class="venue-icon">&#x1F3E2;</div>
+            <div>
+              <div class="venue-label">地址</div>
+              <div class="venue-value">重庆市两江新区东升门路<br/>时代金融中心 A 塔 31层</div>
+            </div>
+          </div>
+          <div class="venue-row">
+            <div class="venue-icon">&#x2696;&#xFE0F;</div>
+            <div>
+              <div class="venue-label">场地</div>
+              <div class="venue-value">坤源衡泰律师事务所</div>
+            </div>
+          </div>
+          <div class="venue-row">
+            <div class="venue-icon">&#x1F552;</div>
+            <div>
+              <div class="venue-label">时间</div>
+              <div class="venue-value">2026年3月28日（周六）10:00 ~ 12:30</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AGENDA -->
+  <section class="agenda-section">
+    <div class="container">
+      <div class="section-tag">活动流程</div>
+      <div class="section-title">2.5小时 · 高效议程</div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-time">09:30 - 10:00</div>
+          <div class="tl-title">签到入场 · 自由社交</div>
+          <div class="tl-desc">提前到场，与参会者建立连接</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-time">10:00 - 10:10</div>
+          <div class="tl-title">开场致辞</div>
+          <div class="tl-desc">何洪涛主任 · 坤源衡泰律师事务所</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-time">10:10 - 10:50</div>
+          <div class="tl-title">AI 如何改变律师行业</div>
+          <div class="tl-desc">从 0 到 1 的 AI 实践 · 业务场景 · 律所战略</div>
+        </div>
+        <div class="tl-item gold">
+          <div class="tl-dot"></div>
+          <div class="tl-time">10:50 - 11:30</div>
+          <div class="tl-title">出海的新模式与方法论</div>
+          <div class="tl-desc">出海的真相 · 赚钱逻辑 · AI 与出海结合</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-time">11:30 - 12:20</div>
+          <div class="tl-title">开放讨论 · 圆桌交流</div>
+          <div class="tl-desc">AI 玩法分享 · 策略逻辑 · 自由提问</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-time">12:20 - 12:30</div>
+          <div class="tl-title">总结 · 合影</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / QR CODE -->
+  <section class="cta-section" id="signup">
+    <div class="container">
+      <div class="cta-urgency">
+        <span class="flash">&#x1F525;</span>
+        仅限 50 席 · 扫码立即报名
+      </div>
+      <div class="section-title">扫码报名 · 锁定席位</div>
+      <p class="section-desc">名额有限，报满即止。<br/>扫描下方二维码，添加微信即可报名。</p>
+      <div class="qr-wrapper">
+        <img src="qrcode.png" alt="扫码报名" />
+      </div>
+      <div class="qr-hint">微信扫一扫 · 添加好友即报名</div>
+      <div class="contact-info">
+        <div class="wechat-icon">W</div>
+        <div class="text">联系人：<strong>法律先生 亚函</strong> · 微信 <strong>flxs987</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="page-footer">
+    <div class="footer-brand"><strong>Lex Magister</strong> · 法律先生</div>
+    <div class="footer-copy">&copy; 2026 法律先生「AI + 出海」巡回论坛</div>
+  </footer>
+
+  <script>
+    // Countdown
+    (function() {
+      var target = new Date('2026-03-28T10:00:00+08:00');
+      var now = new Date();
+      var diff = Math.ceil((target - now) / (1000 * 60 * 60 * 24));
+      var el = document.getElementById('countdown');
+      if (el) el.textContent = diff > 0 ? diff : '0';
+    })();
+  </script>
+
+</body>
+</html>
