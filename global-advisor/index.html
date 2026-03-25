@@ -11,141 +11,173 @@
     html { scroll-behavior: smooth; font-size: 16px; }
     body {
       font-family: -apple-system, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
-      background: #060c18;
-      color: #e2e8f0;
+      background: #f8f7f4;
+      color: #1a1a2e;
       line-height: 1.7;
       overflow-x: hidden;
     }
 
-    /* ===== COLORS ===== */
+    /* ===== DESIGN TOKENS ===== */
     :root {
-      --gold: #c9a84c;
-      --gold-light: #e8c96a;
-      --gold-dim: rgba(201,168,76,0.15);
-      --navy: #060c18;
-      --navy-2: #0d1628;
-      --navy-3: #111f38;
-      --navy-card: #0f1c33;
-      --text: #e2e8f0;
-      --text-muted: #94a3b8;
-      --border: rgba(201,168,76,0.2);
+      --gold:        #b8922a;
+      --gold-light:  #d4a93a;
+      --gold-bg:     rgba(184,146,42,0.08);
+      --gold-border: rgba(184,146,42,0.22);
+      --ink:         #1a1a2e;
+      --ink-2:       #2d2d44;
+      --muted:       #6b6b80;
+      --muted-2:     #9898a8;
+      --bg:          #f8f7f4;
+      --bg-2:        #f2f0ec;
+      --bg-3:        #eceae5;
+      --card:        #ffffff;
+      --border:      #e4e2dc;
+      --red-soft:    rgba(200,60,60,0.07);
+      --red-line:    rgba(200,60,60,0.4);
     }
 
-    /* ===== UTILITIES ===== */
+    /* ===== UTILS ===== */
     .container { max-width: 680px; margin: 0 auto; padding: 0 20px; }
     .gold { color: var(--gold); }
-    .text-center { text-align: center; }
 
     /* ===== TOP BAR ===== */
     .topbar {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(6,12,24,0.92);
-      backdrop-filter: blur(12px);
+      background: rgba(248,247,244,0.94);
+      backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
-      padding: 14px 20px;
+      padding: 13px 20px;
       display: flex; align-items: center; justify-content: space-between;
     }
     .topbar-logo {
-      font-size: 15px; font-weight: 700;
-      letter-spacing: 0.05em; color: var(--gold);
+      display: flex; align-items: baseline; gap: 6px;
     }
-    .topbar-logo span { color: var(--text); font-weight: 400; margin-left: 4px; font-size: 13px; }
+    .topbar-logo-cn {
+      font-size: 15px; font-weight: 800;
+      color: var(--ink); letter-spacing: 0.04em;
+    }
+    .topbar-logo-en {
+      font-size: 11px; color: var(--muted);
+      font-weight: 400; letter-spacing: 0.08em;
+    }
+    .topbar-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--gold); margin: 0 2px 1px;
+      display: inline-block; vertical-align: middle;
+    }
     .topbar-cta {
-      background: var(--gold);
-      color: #060c18;
+      background: var(--ink);
+      color: #fff;
       border: none; border-radius: 20px;
-      padding: 7px 18px; font-size: 13px; font-weight: 700;
+      padding: 8px 20px; font-size: 13px; font-weight: 600;
       cursor: pointer; text-decoration: none;
-      transition: background 0.2s;
+      transition: background 0.2s, transform 0.15s;
+      letter-spacing: 0.02em;
     }
-    .topbar-cta:hover { background: var(--gold-light); }
+    .topbar-cta:hover { background: var(--gold); transform: translateY(-1px); }
 
     /* ===== HERO ===== */
     .hero {
       min-height: 100svh;
       display: flex; align-items: center;
-      background:
-        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(30,60,120,0.3) 0%, transparent 60%),
-        var(--navy);
-      padding: 100px 20px 60px;
+      background: linear-gradient(160deg, #fdfcf9 0%, #f4f1ea 100%);
+      padding: 100px 20px 64px;
       position: relative; overflow: hidden;
     }
+    /* subtle grid texture */
     .hero::before {
       content: '';
-      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.45;
       pointer-events: none;
     }
+    /* gold top accent line */
+    .hero::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, transparent 0%, var(--gold) 40%, var(--gold-light) 60%, transparent 100%);
+    }
+
     .hero-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
 
     .hero-badge {
       display: inline-flex; align-items: center; gap: 8px;
-      background: var(--gold-dim);
-      border: 1px solid var(--border);
+      background: var(--gold-bg);
+      border: 1px solid var(--gold-border);
       border-radius: 100px;
-      padding: 6px 16px; font-size: 12px;
-      color: var(--gold); letter-spacing: 0.08em;
+      padding: 5px 14px; font-size: 12px;
+      color: var(--gold); letter-spacing: 0.1em;
       margin-bottom: 28px;
+      font-weight: 600;
     }
-    .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; animation: pulse 2s infinite; }
-    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
+    .hero-badge-dot {
+      width: 6px; height: 6px; background: var(--gold);
+      border-radius: 50%; animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
 
     .hero h1 {
-      font-size: clamp(28px, 7vw, 42px);
+      font-size: clamp(30px, 7.5vw, 46px);
       font-weight: 800;
-      line-height: 1.25;
-      letter-spacing: -0.01em;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: var(--ink);
       margin-bottom: 20px;
     }
     .hero h1 em {
       font-style: normal;
-      background: linear-gradient(135deg, var(--gold), var(--gold-light));
-      -webkit-background-clip: text; background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: var(--gold);
+      position: relative;
+    }
+    .hero h1 em::after {
+      content: '';
+      position: absolute; left: 0; bottom: -2px; right: 0; height: 3px;
+      background: var(--gold); opacity: 0.3; border-radius: 2px;
     }
 
     .hero-sub {
-      font-size: 16px; color: var(--text-muted);
-      line-height: 1.8; margin-bottom: 36px;
+      font-size: 16px; color: var(--muted);
+      line-height: 1.85; margin-bottom: 36px;
     }
 
     .hero-stats {
       display: grid; grid-template-columns: repeat(3,1fr);
-      gap: 12px; margin-bottom: 40px;
+      gap: 10px; margin-bottom: 40px;
     }
     .stat-item {
-      background: var(--navy-card);
+      background: var(--card);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 16px 12px; text-align: center;
+      padding: 16px 10px; text-align: center;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
     }
     .stat-num {
-      font-size: 24px; font-weight: 800;
-      background: linear-gradient(135deg, var(--gold), var(--gold-light));
-      -webkit-background-clip: text; background-clip: text;
-      -webkit-text-fill-color: transparent;
-      line-height: 1.2;
+      font-size: 24px; font-weight: 900;
+      color: var(--gold); line-height: 1.2;
     }
-    .stat-label { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+    .stat-label { font-size: 11px; color: var(--muted-2); margin-top: 3px; letter-spacing: 0.03em; }
 
     .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
     .btn-primary {
       display: inline-flex; align-items: center; gap: 8px;
-      background: linear-gradient(135deg, var(--gold), #b8902e);
-      color: #060c18; border-radius: 12px;
+      background: var(--ink);
+      color: #fff; border-radius: 12px;
       padding: 14px 28px; font-size: 15px; font-weight: 700;
       text-decoration: none; border: none; cursor: pointer;
-      box-shadow: 0 4px 24px rgba(201,168,76,0.35);
-      transition: all 0.2s;
+      box-shadow: 0 4px 18px rgba(26,26,46,0.18);
+      transition: all 0.2s; letter-spacing: 0.02em;
     }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(201,168,76,0.45); }
+    .btn-primary:hover { background: var(--gold); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(184,146,42,0.28); }
     .btn-secondary {
-      display: inline-flex; align-items: center; gap: 8px;
+      display: inline-flex; align-items: center; gap: 6px;
       background: transparent;
-      color: var(--text); border-radius: 12px;
-      padding: 14px 24px; font-size: 15px; font-weight: 600;
-      text-decoration: none; border: 1px solid var(--border);
+      color: var(--ink); border-radius: 12px;
+      padding: 14px 22px; font-size: 15px; font-weight: 600;
+      text-decoration: none; border: 1.5px solid var(--border);
       cursor: pointer; transition: all 0.2s;
     }
     .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
@@ -153,113 +185,176 @@
     /* ===== SECTION BASE ===== */
     section { padding: 72px 0; }
     .section-label {
-      display: inline-block;
-      font-size: 11px; letter-spacing: 0.15em;
-      color: var(--gold); text-transform: uppercase;
-      margin-bottom: 12px;
+      display: inline-block; font-size: 11px;
+      letter-spacing: 0.18em; color: var(--gold);
+      text-transform: uppercase; margin-bottom: 10px;
+      font-weight: 700;
     }
     .section-title {
       font-size: clamp(22px, 5vw, 30px);
-      font-weight: 800; line-height: 1.3;
-      margin-bottom: 16px;
+      font-weight: 800; line-height: 1.28;
+      color: var(--ink); margin-bottom: 14px;
+      letter-spacing: -0.01em;
     }
     .section-desc {
-      font-size: 15px; color: var(--text-muted);
-      line-height: 1.8; margin-bottom: 40px;
+      font-size: 15px; color: var(--muted);
+      line-height: 1.85; margin-bottom: 36px;
+    }
+    .divider {
+      width: 40px; height: 2px;
+      background: var(--gold); opacity: 0.5;
+      border-radius: 2px; margin: 14px 0 32px;
     }
 
     /* ===== TRUST STRIP ===== */
     .trust-strip {
-      background: var(--navy-2);
+      background: var(--card);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
-      padding: 24px 20px;
+      padding: 22px 20px;
     }
     .trust-inner {
       max-width: 680px; margin: 0 auto;
       display: flex; flex-wrap: wrap;
-      justify-content: center; gap: 8px 24px;
+      justify-content: center; gap: 6px 22px;
     }
     .trust-item {
-      display: flex; align-items: center; gap: 8px;
-      font-size: 13px; color: var(--text-muted);
+      display: flex; align-items: center; gap: 7px;
+      font-size: 13px; color: var(--muted);
     }
-    .trust-item .icon { color: var(--gold); font-size: 15px; }
+    .trust-item .dot { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; }
 
-    /* ===== PROBLEM ===== */
-    .problem-section { background: var(--navy); }
-    .pain-list { display: flex; flex-direction: column; gap: 12px; }
+    /* ===== PROBLEM SECTION ===== */
+    .problem-section { background: var(--bg); }
+    .pain-list { display: flex; flex-direction: column; gap: 10px; }
     .pain-item {
       display: flex; gap: 14px; align-items: flex-start;
-      background: var(--navy-card);
-      border: 1px solid rgba(255,80,80,0.12);
-      border-left: 3px solid rgba(255,80,80,0.5);
-      border-radius: 10px; padding: 16px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--red-line);
+      border-radius: 10px; padding: 16px 18px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     }
-    .pain-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
-    .pain-text { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
-    .pain-text strong { color: var(--text); display: block; margin-bottom: 2px; font-size: 15px; }
+    .pain-icon { font-size: 19px; flex-shrink: 0; margin-top: 3px; }
+    .pain-text { font-size: 14px; color: var(--muted); line-height: 1.75; }
+    .pain-text strong { color: var(--ink); display: block; margin-bottom: 2px; font-size: 15px; font-weight: 700; }
 
     /* ===== SOLUTION ===== */
-    .solution-section { background: var(--navy-2); }
-    .solution-grid { display: flex; flex-direction: column; gap: 16px; }
+    .solution-section { background: var(--bg-2); }
+    .solution-grid { display: flex; flex-direction: column; gap: 12px; }
     .solution-card {
-      background: var(--navy-card);
+      background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 22px;
-      transition: border-color 0.2s, transform 0.2s;
+      border-radius: 14px; padding: 22px 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
     }
-    .solution-card:hover { border-color: var(--gold); transform: translateY(-2px); }
-    .card-icon { font-size: 28px; margin-bottom: 12px; }
-    .card-title { font-size: 17px; font-weight: 700; color: var(--gold); margin-bottom: 8px; }
-    .card-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+    .solution-card:hover {
+      border-color: var(--gold-border);
+      box-shadow: 0 4px 18px rgba(184,146,42,0.1);
+      transform: translateY(-2px);
+    }
+    .card-icon { font-size: 26px; margin-bottom: 10px; }
+    .card-title { font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 7px; }
+    .card-desc { font-size: 14px; color: var(--muted); line-height: 1.75; }
 
     /* ===== HOW IT WORKS ===== */
-    .how-section { background: var(--navy); }
-    .steps { display: flex; flex-direction: column; gap: 0; }
+    .how-section { background: var(--bg); }
+    .steps { display: flex; flex-direction: column; }
     .step {
-      display: flex; gap: 20px; align-items: flex-start;
-      padding-bottom: 32px; position: relative;
+      display: flex; gap: 18px; align-items: flex-start;
+      padding-bottom: 30px; position: relative;
     }
     .step:not(:last-child)::after {
       content: '';
-      position: absolute; left: 19px; top: 44px;
-      width: 2px; bottom: 0;
-      background: linear-gradient(to bottom, var(--gold), transparent);
+      position: absolute; left: 18px; top: 42px; width: 1px; bottom: 0;
+      background: linear-gradient(to bottom, var(--gold-border), transparent);
     }
     .step-num {
-      width: 40px; height: 40px; flex-shrink: 0;
-      background: linear-gradient(135deg, var(--gold), #b8902e);
+      width: 38px; height: 38px; flex-shrink: 0;
+      background: var(--ink);
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-size: 15px; font-weight: 800; color: #060c18;
+      font-size: 14px; font-weight: 800; color: #fff;
     }
-    .step-body { flex: 1; padding-top: 6px; }
-    .step-title { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
-    .step-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+    .step-body { flex: 1; padding-top: 5px; }
+    .step-title { font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 5px; }
+    .step-desc { font-size: 14px; color: var(--muted); line-height: 1.75; }
+
+    /* ===== NODES ===== */
+    .nodes-section { background: var(--bg-2); }
+    .nodes-intro {
+      font-size: 15px; color: var(--muted);
+      line-height: 1.8; margin-bottom: 28px;
+    }
+    .nodes-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 10px; margin-bottom: 28px;
+    }
+    .node-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 16px;
+      display: flex; align-items: flex-start; gap: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .node-card:hover { border-color: var(--gold-border); transform: translateY(-2px); }
+    .node-flag { font-size: 22px; flex-shrink: 0; }
+    .node-info {}
+    .node-city { font-size: 15px; font-weight: 700; color: var(--ink); line-height: 1.3; }
+    .node-country { font-size: 12px; color: var(--muted-2); margin-top: 2px; }
+    .node-tag {
+      display: inline-block; font-size: 10px;
+      background: var(--gold-bg); color: var(--gold);
+      border: 1px solid var(--gold-border);
+      border-radius: 4px; padding: 1px 6px;
+      margin-top: 4px; font-weight: 600; letter-spacing: 0.05em;
+    }
+    .nodes-note {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      border-radius: 10px; padding: 14px 18px;
+      font-size: 13px; color: var(--muted); line-height: 1.7;
+    }
 
     /* ===== SCOPE ===== */
-    .scope-section { background: var(--navy-2); }
-    .region-list { display: flex; flex-direction: column; gap: 10px; }
+    .scope-section { background: var(--bg); }
+    .region-list { display: flex; flex-direction: column; gap: 8px; }
     .region-item {
-      background: var(--navy-card);
+      background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 10px; padding: 14px 18px;
+      border-radius: 10px; padding: 14px 16px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
     }
     .region-name {
-      font-size: 13px; font-weight: 700; color: var(--gold);
-      margin-bottom: 6px; display: flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 700; color: var(--ink);
+      margin-bottom: 5px; display: flex; align-items: center; gap: 6px;
     }
-    .region-countries { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+    .region-countries { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+    /* ===== WHO ===== */
+    .who-section { background: var(--bg-2); }
+    .who-list { display: flex; flex-direction: column; gap: 8px; }
+    .who-item {
+      display: flex; gap: 14px; align-items: center;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 15px 16px;
+      font-size: 14px; color: var(--muted);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .who-icon { font-size: 20px; flex-shrink: 0; }
 
     /* ===== PRICING ===== */
-    .pricing-section { background: var(--navy); }
+    .pricing-section { background: var(--bg); }
     .pricing-card {
-      background: var(--navy-card);
-      border: 1px solid var(--gold);
+      background: var(--card);
+      border: 1.5px solid var(--ink);
       border-radius: 20px; padding: 36px 28px;
       position: relative; overflow: hidden;
+      box-shadow: 0 8px 40px rgba(26,26,46,0.1);
     }
     .pricing-card::before {
       content: '';
@@ -268,132 +363,130 @@
     }
     .pricing-badge {
       display: inline-block;
-      background: var(--gold-dim);
-      border: 1px solid var(--border);
+      background: var(--gold-bg);
+      border: 1px solid var(--gold-border);
       border-radius: 100px; padding: 4px 14px;
       font-size: 12px; color: var(--gold);
-      margin-bottom: 20px;
+      margin-bottom: 18px; font-weight: 600;
     }
-    .pricing-title { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+    .pricing-title { font-size: 19px; font-weight: 800; color: var(--ink); margin-bottom: 8px; }
     .pricing-price {
-      font-size: 42px; font-weight: 900;
-      background: linear-gradient(135deg, var(--gold), var(--gold-light));
-      -webkit-background-clip: text; background-clip: text;
-      -webkit-text-fill-color: transparent;
-      line-height: 1; margin-bottom: 4px;
+      font-size: 46px; font-weight: 900;
+      color: var(--ink); line-height: 1; margin-bottom: 4px;
+      letter-spacing: -0.03em;
     }
-    .pricing-period { font-size: 14px; color: var(--text-muted); margin-bottom: 28px; }
-    .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+    .pricing-price span { font-size: 22px; font-weight: 700; vertical-align: super; }
+    .pricing-period { font-size: 14px; color: var(--muted); margin-bottom: 28px; }
+    .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 11px; margin-bottom: 28px; }
     .pricing-features li {
       display: flex; gap: 10px; align-items: flex-start;
-      font-size: 14px; color: var(--text-muted); line-height: 1.6;
+      font-size: 14px; color: var(--muted-2); line-height: 1.65;
     }
-    .pricing-features li::before {
-      content: '✦';
-      color: var(--gold); flex-shrink: 0; font-size: 11px; margin-top: 4px;
+    .pricing-check {
+      width: 18px; height: 18px; flex-shrink: 0;
+      background: var(--gold-bg); border: 1px solid var(--gold-border);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 10px; color: var(--gold); margin-top: 1px; font-weight: 800;
     }
     .pricing-note {
-      font-size: 13px; color: var(--text-muted);
-      background: rgba(255,255,255,0.03);
-      border-radius: 8px; padding: 12px 16px;
-      border-left: 2px solid var(--border);
-      margin-bottom: 28px;
+      font-size: 13px; color: var(--muted);
+      background: var(--bg-2);
+      border-radius: 8px; padding: 12px 14px;
+      border-left: 2px solid var(--gold-border);
+      margin-bottom: 28px; line-height: 1.7;
     }
 
     /* ===== ABOUT ===== */
-    .about-section { background: var(--navy-2); }
+    .about-section { background: var(--bg-2); }
     .about-card {
-      background: var(--navy-card);
+      background: var(--card);
       border: 1px solid var(--border);
       border-radius: 16px; padding: 28px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
+    .about-text { font-size: 15px; color: var(--muted); line-height: 1.85; margin-bottom: 10px; }
     .about-nums {
       display: grid; grid-template-columns: repeat(2,1fr);
-      gap: 16px; margin-top: 24px;
+      gap: 12px; margin-top: 24px;
     }
     .about-num-item {
-      text-align: center;
-      padding: 16px;
-      background: rgba(201,168,76,0.04);
-      border-radius: 10px;
-      border: 1px solid var(--border);
+      text-align: center; padding: 16px 10px;
+      background: var(--bg);
+      border-radius: 10px; border: 1px solid var(--border);
     }
-    .about-num { font-size: 22px; font-weight: 800; color: var(--gold); line-height: 1.2; }
-    .about-num-label { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
-
-    /* ===== WHO ===== */
-    .who-section { background: var(--navy); }
-    .who-list { display: flex; flex-direction: column; gap: 10px; }
-    .who-item {
-      display: flex; gap: 14px; align-items: center;
-      background: var(--navy-card);
-      border: 1px solid var(--border);
-      border-radius: 12px; padding: 16px 18px;
-      font-size: 14px; color: var(--text-muted);
-    }
-    .who-item .who-icon { font-size: 22px; flex-shrink: 0; }
+    .about-num { font-size: 22px; font-weight: 900; color: var(--gold); line-height: 1.2; }
+    .about-num-label { font-size: 11px; color: var(--muted-2); margin-top: 3px; }
 
     /* ===== CTA ===== */
     .cta-section {
-      background:
-        radial-gradient(ellipse 80% 60% at 50% 100%, rgba(201,168,76,0.1) 0%, transparent 60%),
-        var(--navy-2);
+      background: var(--ink);
       padding: 80px 20px;
+      position: relative; overflow: hidden;
     }
-    .cta-box {
-      max-width: 560px; margin: 0 auto;
-      background: var(--navy-card);
-      border: 1px solid var(--border);
-      border-radius: 20px; padding: 40px 28px;
-      text-align: center; position: relative; overflow: hidden;
-    }
-    .cta-box::before {
+    .cta-section::before {
       content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
     }
-    .cta-title { font-size: 24px; font-weight: 800; margin-bottom: 12px; }
-    .cta-desc { font-size: 15px; color: var(--text-muted); margin-bottom: 28px; line-height: 1.7; }
+    .cta-inner {
+      position: relative; z-index: 1;
+      max-width: 560px; margin: 0 auto; text-align: center;
+    }
+    .cta-label {
+      display: inline-block; font-size: 11px;
+      letter-spacing: 0.18em; color: var(--gold);
+      text-transform: uppercase; margin-bottom: 12px; font-weight: 700;
+    }
+    .cta-title { font-size: 26px; font-weight: 800; color: #fff; margin-bottom: 12px; }
+    .cta-desc { font-size: 15px; color: rgba(255,255,255,0.55); margin-bottom: 32px; line-height: 1.75; }
+
     .wechat-block {
-      background: rgba(201,168,76,0.06);
-      border: 1px dashed var(--border);
-      border-radius: 12px; padding: 20px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px; padding: 24px 20px;
       margin-bottom: 24px;
     }
     .wechat-id {
-      font-size: 22px; font-weight: 800; color: var(--gold);
-      letter-spacing: 0.05em; margin-bottom: 4px;
+      font-size: 28px; font-weight: 900; color: var(--gold);
+      letter-spacing: 0.05em; margin-bottom: 6px;
     }
-    .wechat-label { font-size: 13px; color: var(--text-muted); }
+    .wechat-label { font-size: 13px; color: rgba(255,255,255,0.45); }
     .wechat-tip {
       display: flex; align-items: center; gap: 6px;
       justify-content: center; margin-top: 10px;
-      font-size: 13px; color: var(--text-muted);
+      font-size: 13px; color: rgba(255,255,255,0.4);
     }
     .contact-person {
-      font-size: 14px; color: var(--text-muted); margin-bottom: 20px;
+      font-size: 14px; color: rgba(255,255,255,0.45); margin-bottom: 20px;
     }
-    .contact-person strong { color: var(--text); }
+    .contact-person strong { color: rgba(255,255,255,0.8); }
+    .btn-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold);
+      color: var(--ink); border-radius: 12px;
+      padding: 16px 32px; font-size: 16px; font-weight: 800;
+      text-decoration: none; border: none; cursor: pointer;
+      width: 100%; justify-content: center;
+      box-shadow: 0 4px 24px rgba(184,146,42,0.4);
+      transition: all 0.2s; letter-spacing: 0.02em;
+    }
+    .btn-cta:hover { background: var(--gold-light); transform: translateY(-2px); }
 
     /* ===== FOOTER ===== */
     footer {
-      background: var(--navy);
-      border-top: 1px solid var(--border);
+      background: #111122;
+      border-top: 1px solid rgba(255,255,255,0.06);
       padding: 28px 20px; text-align: center;
     }
-    .footer-logo { font-size: 16px; font-weight: 800; color: var(--gold); margin-bottom: 8px; }
-    .footer-sub { font-size: 12px; color: var(--text-muted); }
+    .footer-logo { font-size: 15px; font-weight: 800; color: var(--gold); margin-bottom: 6px; }
+    .footer-sub { font-size: 12px; color: rgba(255,255,255,0.3); }
 
-    /* ===== DIVIDER ===== */
-    .divider {
-      width: 48px; height: 3px;
-      background: linear-gradient(90deg, var(--gold), transparent);
-      border-radius: 2px; margin: 16px 0 32px;
-    }
-
-    /* ===== SCROLL REVEAL (CSS only) ===== */
+    /* ===== SCROLL REVEAL ===== */
     @media (prefers-reduced-motion: no-preference) {
-      .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+      .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
       .reveal.visible { opacity: 1; transform: none; }
     }
   </style>
@@ -402,14 +495,21 @@
 
   <!-- TOP BAR -->
   <nav class="topbar">
-    <div class="topbar-logo">法律先生 <span>Lex Magister</span></div>
+    <div class="topbar-logo">
+      <span class="topbar-logo-cn">法律先生</span>
+      <span class="topbar-dot"></span>
+      <span class="topbar-logo-en">Lex Magister</span>
+    </div>
     <a href="#contact" class="topbar-cta">立即咨询</a>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
     <div class="hero-inner">
-      <div class="hero-badge">全球法律顾问服务 · 2025 开放预约</div>
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        全球法律顾问服务 · 2025 开放预约
+      </div>
 
       <h1>
         出海无国界，<br/>
@@ -442,7 +542,7 @@
           <span>📋</span> 预约专属顾问
         </a>
         <a href="#pricing" class="btn-secondary">
-          <span>查看方案</span> →
+          查看方案 →
         </a>
       </div>
     </div>
@@ -451,11 +551,11 @@
   <!-- TRUST STRIP -->
   <div class="trust-strip">
     <div class="trust-inner">
-      <div class="trust-item"><span class="icon">✦</span> 中国企业出海专属设计</div>
-      <div class="trust-item"><span class="icon">✦</span> 国内统筹 + 海外本地律师</div>
-      <div class="trust-item"><span class="icon">✦</span> 年度持续服务，不限次咨询</div>
-      <div class="trust-item"><span class="icon">✦</span> 40万+ 律师资源网络</div>
-      <div class="trust-item"><span class="icon">✦</span> 东京·新加坡·迪拜·巴黎本地节点</div>
+      <div class="trust-item"><span class="dot"></span> 中国企业出海专属设计</div>
+      <div class="trust-item"><span class="dot"></span> 国内统筹 + 海外本地律师</div>
+      <div class="trust-item"><span class="dot"></span> 年度持续服务，不限次咨询</div>
+      <div class="trust-item"><span class="dot"></span> 40万+ 律师资源网络</div>
+      <div class="trust-item"><span class="dot"></span> 七大全球节点实时响应</div>
     </div>
   </div>
 
@@ -518,7 +618,7 @@
         <div class="solution-card">
           <div class="card-icon">📄</div>
           <div class="card-title">商业文件全程把关</div>
-          <div class="card-desc">合作协议、合作备忘录、授权文件……覆盖跨境经营全链路的法律文件审阅与起草建议，消灭潜在风险源。</div>
+          <div class="card-desc">合作协议、备忘录、授权文件……覆盖跨境经营全链路的法律文件审阅与起草建议，消灭潜在风险源。</div>
         </div>
         <div class="solution-card">
           <div class="card-icon">🌍</div>
@@ -573,12 +673,92 @@
     </div>
   </section>
 
+  <!-- LOCAL NODES -->
+  <section class="nodes-section">
+    <div class="container reveal">
+      <div class="section-label">本地节点</div>
+      <h2 class="section-title">你所在的城市，<br/>我们已提前布局</h2>
+      <p class="nodes-intro">
+        法律先生在全球核心城市建立了实体服务节点，配置本地执业团队与资源网络，确保服务不依赖时差、不受远程沟通损耗，在你最需要的地方真实在场。
+      </p>
+      <div class="nodes-grid">
+        <div class="node-card">
+          <div class="node-flag">🇻🇳</div>
+          <div class="node-info">
+            <div class="node-city">胡志明市</div>
+            <div class="node-country">越南 · Vietnam</div>
+            <div class="node-tag">东南亚枢纽</div>
+          </div>
+        </div>
+        <div class="node-card">
+          <div class="node-flag">🇭🇰</div>
+          <div class="node-info">
+            <div class="node-city">香港</div>
+            <div class="node-country">中国香港 · Hong Kong</div>
+            <div class="node-tag">亚太金融中心</div>
+          </div>
+        </div>
+        <div class="node-card">
+          <div class="node-flag">🇸🇬</div>
+          <div class="node-info">
+            <div class="node-city">新加坡</div>
+            <div class="node-country">新加坡 · Singapore</div>
+            <div class="node-tag">东南亚法律中心</div>
+          </div>
+        </div>
+        <div class="node-card">
+          <div class="node-flag">🇯🇵</div>
+          <div class="node-info">
+            <div class="node-city">东京</div>
+            <div class="node-country">日本 · Japan</div>
+            <div class="node-tag">东北亚核心</div>
+          </div>
+        </div>
+        <div class="node-card">
+          <div class="node-flag">🇦🇪</div>
+          <div class="node-info">
+            <div class="node-city">迪拜</div>
+            <div class="node-country">阿联酋 · UAE</div>
+            <div class="node-tag">中东非洲门户</div>
+          </div>
+        </div>
+        <div class="node-card">
+          <div class="node-flag">🇫🇷</div>
+          <div class="node-info">
+            <div class="node-city">巴黎</div>
+            <div class="node-country">法国 · France</div>
+            <div class="node-tag">欧洲大陆核心</div>
+          </div>
+        </div>
+        <div class="node-card">
+          <div class="node-flag">🇳🇱</div>
+          <div class="node-info">
+            <div class="node-city">海牙</div>
+            <div class="node-country">荷兰 · Netherlands</div>
+            <div class="node-tag">国际仲裁之都</div>
+          </div>
+        </div>
+        <div class="node-card" style="border-style: dashed; background: var(--bg);">
+          <div class="node-flag">🌐</div>
+          <div class="node-info">
+            <div class="node-city" style="color:var(--muted);">持续扩展中</div>
+            <div class="node-country">更多节点布局中</div>
+            <div class="node-tag">即将上线</div>
+          </div>
+        </div>
+      </div>
+      <div class="nodes-note">
+        📌 海牙节点专为国际仲裁、跨境争议解决及国际法事务提供专属支持，联动常设仲裁法院（PCA）及国际法院（ICJ）周边法律资源。
+      </div>
+    </div>
+  </section>
+
   <!-- SCOPE -->
   <section class="scope-section">
     <div class="container reveal">
       <div class="section-label">覆盖范围</div>
       <h2 class="section-title">你想去的地方，<br/>我们都在那里</h2>
-      <p class="section-desc">目前已覆盖及可支持的国家与地区累计超过 <span class="gold">100个</span>，涵盖全球主要出海目的地。</p>
+      <p class="section-desc">目前已覆盖及可支持的国家与地区累计超过 <strong style="color:var(--gold)">100个</strong>，涵盖全球主要出海目的地。</p>
       <div class="region-list">
         <div class="region-item">
           <div class="region-name">🌏 东南亚</div>
@@ -656,17 +836,17 @@
       <div class="pricing-card">
         <div class="pricing-badge">✦ 全球法律顾问服务 · 年度方案</div>
         <div class="pricing-title">Lex Magister Global Legal Retainer</div>
-        <div class="pricing-price">¥168,000</div>
+        <div class="pricing-price"><span>¥</span>168,000</div>
         <div class="pricing-period">/ 年度 · 含2个国家默认覆盖</div>
 
         <ul class="pricing-features">
-          <li>全年不限次日常法律咨询，专属通道快速响应</li>
-          <li>商业合同与法律文件审阅及起草建议</li>
-          <li>经营决策、投资合作的法律支持意见</li>
-          <li>2个目标国家本地律师团队常驻支持</li>
-          <li>多法域突发情况快速调配资源</li>
-          <li>主动推送各国法律政策风险更新</li>
-          <li>专属客户经理，全程项目管理跟进</li>
+          <li><div class="pricing-check">✓</div> 全年不限次日常法律咨询，专属通道快速响应</li>
+          <li><div class="pricing-check">✓</div> 商业合同与法律文件审阅及起草建议</li>
+          <li><div class="pricing-check">✓</div> 经营决策、投资合作的法律支持意见</li>
+          <li><div class="pricing-check">✓</div> 2个目标国家本地律师团队常驻支持</li>
+          <li><div class="pricing-check">✓</div> 多法域突发情况快速调配资源</li>
+          <li><div class="pricing-check">✓</div> 主动推送各国法律政策风险更新</li>
+          <li><div class="pricing-check">✓</div> 专属客户经理，全程项目管理跟进</li>
         </ul>
 
         <div class="pricing-note">
@@ -687,11 +867,11 @@
       <h2 class="section-title">11年，只做一件事</h2>
       <p class="section-desc">帮助中国企业在全球市场，用法律的力量走得更稳、更远。</p>
       <div class="about-card">
-        <p style="font-size:15px;color:var(--text-muted);line-height:1.8;margin-bottom:20px;">
+        <p class="about-text">
           法律先生（Lex Magister）是面向中国企业出海构建的全球领先法律与资源整合平台。经过11年持续积累，我们不是一家单一律所，而是一个连接全球法律资源、专注跨法域协同的服务网络。
         </p>
-        <p style="font-size:15px;color:var(--text-muted);line-height:1.8;margin-bottom:8px;">
-          在东京、新加坡、迪拜、巴黎等地已建立本地服务节点，能够在多国家、多时区环境下为企业提供实时响应与落地执行。
+        <p class="about-text">
+          在胡志明市、香港、新加坡、东京、迪拜、巴黎、海牙等地已建立本地服务节点，能够在多国家、多时区环境下为企业提供实时响应与落地执行。
         </p>
         <div class="about-nums">
           <div class="about-num-item">
@@ -717,8 +897,8 @@
 
   <!-- CTA -->
   <section class="cta-section" id="contact">
-    <div class="cta-box reveal">
-      <div class="section-label" style="display:block;margin-bottom:12px;">开始合作</div>
+    <div class="cta-inner reveal">
+      <div class="cta-label">开始合作</div>
       <h2 class="cta-title">预约专属法律顾问</h2>
       <p class="cta-desc">
         出海不应该独自面对法律的不确定性。<br/>
@@ -727,7 +907,7 @@
 
       <div class="wechat-block">
         <div class="wechat-id">flxs77</div>
-        <div class="wechat-label">微信号 · 扫码 / 搜号添加</div>
+        <div class="wechat-label">微信号 · 搜号添加</div>
         <div class="wechat-tip">
           <span>💬</span> 添加后注明「全球顾问」即可快速对接
         </div>
@@ -737,7 +917,7 @@
         联系人：<strong>伊然</strong> · 法律先生国际事务部总监
       </div>
 
-      <a href="weixin://dl/search?keyword=flxs77" class="btn-primary" style="width:100%;justify-content:center;">
+      <a href="#" class="btn-cta">
         <span>💬</span> 微信添加伊然
       </a>
     </div>
@@ -746,20 +926,15 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-logo">法律先生 · Lex Magister</div>
-    <div class="footer-sub" style="margin-top:6px;">
-      Lex Magister Global Research · 法律先生出海研究院
-    </div>
-    <div class="footer-sub" style="margin-top:8px;font-size:11px;opacity:0.5;">
-      © 2025 Lex Magister. All rights reserved.
-    </div>
+    <div class="footer-sub" style="margin-top:5px;">Lex Magister Global Research · 法律先生出海研究院</div>
+    <div class="footer-sub" style="margin-top:8px;opacity:0.4;font-size:11px;">© 2025 Lex Magister. All rights reserved.</div>
   </footer>
 
-  <!-- SCROLL REVEAL -->
   <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   </script>
 
 </body>
