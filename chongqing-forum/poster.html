@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=750, initial-scale=1.0" />
+  <title>海报 - 法律先生「AI + 出海」巡回论坛 · 重庆站</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 750px; height: 1334px; overflow: hidden; }
+    body {
+      font-family: -apple-system, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+      width: 750px;
+      height: 1334px;
+      background: #faf9f5;
+      position: relative;
+      overflow: hidden;
+    }
+
+    :root {
+      --accent: #c0392b;
+      --accent-soft: rgba(192,57,43,0.07);
+      --gold: #b8922a;
+      --gold-soft: rgba(184,146,42,0.06);
+      --ink: #1a1a2e;
+      --muted: #6b6b80;
+      --muted-2: #9898a8;
+      --bg: #faf9f5;
+      --bg-2: #f2f0ea;
+      --card: #ffffff;
+      --border: #e4e2dc;
+    }
+
+    /* ===== BACKGROUND DECORATION ===== */
+    .bg-circle-1 {
+      position: absolute;
+      top: -100px; right: -80px;
+      width: 380px; height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(192,57,43,0.06) 0%, transparent 70%);
+    }
+    .bg-circle-2 {
+      position: absolute;
+      bottom: 200px; left: -120px;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(184,146,42,0.06) 0%, transparent 70%);
+    }
+    .bg-grid {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.015) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    /* ===== TOP BRAND BAR ===== */
+    .top-bar {
+      padding: 40px 56px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 1;
+    }
+    .brand {
+      font-size: 15px;
+      letter-spacing: 3px;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+    .brand strong { color: var(--ink); font-weight: 700; }
+    .tour-badge {
+      background: var(--accent);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 6px 18px;
+      border-radius: 20px;
+      letter-spacing: 2px;
+    }
+
+    /* ===== MAIN CONTENT ===== */
+    .content {
+      padding: 28px 56px 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Title area */
+    .title-area { margin-bottom: 24px; }
+    .headline-sub {
+      font-size: 16px;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+    .headline {
+      font-family: "Noto Serif SC", "PingFang SC", serif;
+      font-size: 52px;
+      font-weight: 900;
+      line-height: 1.25;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .headline .ai { color: var(--accent); }
+    .headline .sea { color: var(--gold); }
+    .headline-question {
+      font-family: "Noto Serif SC", "PingFang SC", serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-top: 4px;
+    }
+
+    /* Divider */
+    .divider {
+      width: 64px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--gold));
+      border-radius: 2px;
+      margin: 20px 0;
+    }
+
+    /* City badge */
+    .city-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--card);
+      border: 1.5px solid var(--border);
+      border-radius: 32px;
+      padding: 12px 28px;
+      margin-bottom: 22px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+    .city-dot {
+      width: 12px; height: 12px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(192,57,43,0.15);
+    }
+    .city-name {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--ink);
+      letter-spacing: 4px;
+    }
+
+    /* Info cards */
+    .info-row {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .info-card {
+      flex: 1;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 16px;
+      text-align: center;
+    }
+    .info-card .icon { font-size: 22px; margin-bottom: 6px; }
+    .info-card .label {
+      font-size: 11px;
+      color: var(--muted-2);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 4px;
+    }
+    .info-card .val {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .info-card .val.red { color: var(--accent); }
+
+    /* Topics preview */
+    .topics-preview {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    .topics-header {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .topics-header::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .topic-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .topic-tag {
+      font-size: 13px;
+      font-weight: 600;
+      padding: 7px 16px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .topic-tag.ai {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid rgba(192,57,43,0.15);
+    }
+    .topic-tag.sea {
+      background: var(--gold-soft);
+      color: var(--gold);
+      border: 1px solid rgba(184,146,42,0.15);
+    }
+    .topic-tag.mix {
+      background: linear-gradient(90deg, rgba(192,57,43,0.05), rgba(184,146,42,0.05));
+      color: var(--ink);
+      border: 1px solid var(--border);
+    }
+
+    /* Speakers row */
+    .speakers-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .speaker-chip {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 14px;
+    }
+    .speaker-chip .avatar {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: var(--bg-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .speaker-chip .s-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .speaker-chip .s-role {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.3;
+    }
+
+    /* ===== BOTTOM AREA ===== */
+    .bottom-area {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: var(--card);
+      border-top: 1px solid var(--border);
+      padding: 28px 56px 40px;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      z-index: 2;
+    }
+    .qr-box {
+      width: 140px; height: 140px;
+      flex-shrink: 0;
+      border: 2px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      background: #fff;
+      padding: 6px;
+    }
+    .qr-box img {
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+      display: block;
+    }
+    .cta-text {
+      flex: 1;
+    }
+    .cta-text .cta-main {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .cta-text .cta-sub {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+    .cta-text .cta-urgency {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 8px 22px;
+      border-radius: 22px;
+      letter-spacing: 1px;
+    }
+    .cta-text .cta-contact {
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--muted-2);
+    }
+    .cta-text .cta-contact strong { color: var(--muted); }
+
+    /* Side decoration line */
+    .side-line {
+      position: absolute;
+      left: 28px;
+      top: 120px;
+      bottom: 230px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--accent), var(--gold), transparent);
+      border-radius: 1px;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background -->
+  <div class="bg-circle-1"></div>
+  <div class="bg-circle-2"></div>
+  <div class="bg-grid"></div>
+  <div class="side-line"></div>
+
+  <!-- Top Brand Bar -->
+  <div class="top-bar">
+    <div class="brand"><strong>Lex Magister</strong> · 法律先生</div>
+    <div class="tour-badge">巡回论坛</div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content">
+    <div class="title-area">
+      <div class="headline-sub">世界变幻如此，唯有 AI 与出海令人振奋</div>
+      <div class="headline">
+        「<span class="ai">AI</span> + <span class="sea">出海</span>」
+      </div>
+      <div class="headline-question">如何改变法律行业？</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="city-badge">
+      <div class="city-dot"></div>
+      <div class="city-name">重 庆 站</div>
+    </div>
+
+    <!-- Info Cards -->
+    <div class="info-row">
+      <div class="info-card">
+        <div class="icon">&#x1F4C5;</div>
+        <div class="label">日期</div>
+        <div class="val">3月28日 周六</div>
+      </div>
+      <div class="info-card">
+        <div class="icon">&#x1F552;</div>
+        <div class="label">时间</div>
+        <div class="val">10:00 - 12:30</div>
+      </div>
+      <div class="info-card">
+        <div class="icon">&#x1F525;</div>
+        <div class="label">限额</div>
+        <div class="val red">仅 50 席</div>
+      </div>
+    </div>
+
+    <!-- Topics Preview -->
+    <div class="topics-preview">
+      <div class="topics-header">7 大核心议题</div>
+      <div class="topic-list">
+        <span class="topic-tag ai">AI 从 0 到 1</span>
+        <span class="topic-tag ai">AI × 律师业务</span>
+        <span class="topic-tag ai">AI 律所战略</span>
+        <span class="topic-tag sea">出海新模式</span>
+        <span class="topic-tag sea">出海方法论</span>
+        <span class="topic-tag mix">AI × 出海</span>
+        <span class="topic-tag mix">策略逻辑讨论</span>
+      </div>
+    </div>
+
+    <!-- Speakers -->
+    <div class="speakers-row">
+      <div class="speaker-chip">
+        <div class="avatar">&#x2696;&#xFE0F;</div>
+        <div>
+          <div class="s-name">何洪涛</div>
+          <div class="s-role">坤源衡泰 主任</div>
+        </div>
+      </div>
+      <div class="speaker-chip">
+        <div class="avatar">&#x2696;&#xFE0F;</div>
+        <div>
+          <div class="s-name">熊鑫</div>
+          <div class="s-role">坤源衡泰 副主任</div>
+        </div>
+      </div>
+    </div>
+    <div class="speakers-row" style="margin-top: -20px;">
+      <div class="speaker-chip">
+        <div class="avatar">&#x1F4BB;</div>
+        <div>
+          <div class="s-name">龙雄彪</div>
+          <div class="s-role">法狗狗 创始人</div>
+        </div>
+      </div>
+      <div class="speaker-chip">
+        <div class="avatar">&#x1F30D;</div>
+        <div>
+          <div class="s-name">彭帅</div>
+          <div class="s-role">法律先生 创始人</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Venue mini card -->
+    <div style="background: var(--bg-2); border-radius: 14px; padding: 20px 24px; margin-bottom: 20px; display: flex; align-items: center; gap: 16px;">
+      <div style="font-size: 32px;">&#x1F3E2;</div>
+      <div>
+        <div style="font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 2px;">重庆市两江新区 · 时代金融中心 A塔 31层</div>
+        <div style="font-size: 12px; color: var(--muted);">坤源衡泰律师事务所 · 2026年3月28日（周六）</div>
+      </div>
+    </div>
+
+    <!-- Quote -->
+    <div style="text-align: center; padding: 16px 20px; border-left: 3px solid var(--accent); background: var(--accent-soft); border-radius: 0 12px 12px 0;">
+      <div style="font-size: 15px; color: var(--ink-2); font-style: italic; line-height: 1.6; font-weight: 500;">
+        「 当 AI 遇见出海，法律行业的边界正在被重新定义 」
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom CTA -->
+  <div class="bottom-area">
+    <div class="qr-box">
+      <img src="qrcode.png" alt="报名二维码" />
+    </div>
+    <div class="cta-text">
+      <div class="cta-main">扫码报名 · 锁定席位</div>
+      <div class="cta-sub">重庆两江新区 · 时代金融中心 A塔 31层<br/>坤源衡泰律师事务所</div>
+      <div class="cta-urgency">&#x1F525; 名额有限 · 报满即止</div>
+      <div class="cta-contact">联系人：<strong>亚函</strong> · 微信 <strong>flxs987</strong></div>
+    </div>
+  </div>
+
+</body>
+</html>
